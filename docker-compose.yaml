@@ -1,0 +1,25 @@
+version: '3'
+services:
+  nextjs:
+    build:
+      context: ./nextjs
+    volumes:
+      - ./nextjs:/nextjs
+      - node_modules:/nextjs/node_modules
+    ports:
+      - 3000:3000
+    tty: true
+    init: true
+
+  terraform:
+    image: hashicorp/terraform:1.6
+    volumes:
+      - ./terraform:/terraform
+    entrypoint: ash
+    tty: true
+    init: true
+    env_file:
+      - .env
+
+volumes:
+  node_modules:
