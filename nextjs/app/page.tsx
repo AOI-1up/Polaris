@@ -12,15 +12,15 @@ const Home = () => {
       </header>
 
       <div className="flex flex-grow">
-        <nav className="w-[230px]">
+        <nav className="w-[230px] min-w-[230px]">
           <Nav />
         </nav>
 
-        <main className="flex-grow">
+        <main className="flex-grow ">
           <Main />
         </main>
 
-        <aside className="w-[230px]">
+        <aside className="w-[230px] min-w-[230px]">
           <Aside />
         </aside>
       </div>
