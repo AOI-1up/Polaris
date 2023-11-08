@@ -1,3 +1,4 @@
+"use client";
 import { CustomAccordion } from "./ui/select/CustomAccordion";
 
 export const Nav = () => {

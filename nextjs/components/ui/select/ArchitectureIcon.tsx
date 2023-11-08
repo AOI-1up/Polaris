@@ -16,6 +16,7 @@ export const ArchitectureIcon = (props: Props) => {
   const serviceList = ServiceSelector({ type: props.resources });
   const state = UseCanvasState();
 
+  /* 要素を Jotai に追加する関数 */
   const setCanvasElementArray = useSetAtom(CanvasElement);
   const setCanvasElement = (newCanvasElement: CanvasElementObject) => {
     setCanvasElementArray((prevArray) => [...prevArray, newCanvasElement]);
@@ -28,7 +29,13 @@ export const ArchitectureIcon = (props: Props) => {
           <div
             className="w-[45px] h-[45px] flex justify-center items-center hover:bg-gray-300 active:opacity-50 rounded"
             onMouseDown={() => {
-              const serviceIcon = { name: service.name, src: service.src };
+              const serviceIcon = {
+                name: service.name,
+                src: service.src,
+                width: service.width,
+                height: service.height,
+                resources: service.resources,
+              };
               DragAndDrop(
                 setShowDragged,
                 setPosition,

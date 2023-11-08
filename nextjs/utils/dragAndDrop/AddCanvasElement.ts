@@ -3,24 +3,28 @@ import { CanvasElementObject } from "@/types/canvas";
 
 export const AddCanvasElement = (
   setCanvasElement: (newCanvasElement: CanvasElementObject) => void,
-  serviceIcon: {
+  service: {
     name: string;
     src: string;
+    width: number;
+    height: number;
+    resources: Record<string, unknown>;
   },
   position: {
     x: number;
     y: number;
   }
 ) => {
+  // width height resources も props で受け取る
   const newCanvasElement = {
     id: uuid(),
-    service: serviceIcon.name,
-    src: serviceIcon.src,
+    service: service.name,
+    src: service.src,
     x: position.x,
     y: position.y,
-    width: 80,
-    height: 80,
-    resources: {},
+    width: service.width,
+    height: service.height,
+    resources: service.resources,
   };
   setCanvasElement(newCanvasElement);
   return;

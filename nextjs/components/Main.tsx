@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { useSetAtom, useAtomValue } from "jotai";
 import {
@@ -17,6 +18,7 @@ export const Main = () => {
   const setContext = useSetAtom(ContextAtom);
 
   useEffect(() => {
+    /* Canvas を Jotai に格納する */
     const canvas = canvasRef.current;
     const canvasContainer = canvasContainerRef.current;
     const context = canvas?.getContext("2d");
@@ -36,6 +38,7 @@ export const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* Jotai から要素を Canvas に追加する */
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
@@ -48,6 +51,8 @@ export const Main = () => {
         context.drawImage(icon, element.x, element.y);
       };
     });
+
+    console.log(canvasElementArray);
   }, [canvasElementArray]);
 
   return (

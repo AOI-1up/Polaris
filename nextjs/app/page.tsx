@@ -1,8 +1,9 @@
-"use client";
 import { Header } from "@/components/Header";
 import { Nav } from "@/components/Nav";
 import { Main } from "@/components/Main";
 import { Aside } from "@/components/Aside";
+
+export const metadata = { title: "Polaris" };
 
 const Home = () => {
   return (
