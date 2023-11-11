@@ -10,7 +10,11 @@ import { CanvasElementObject } from "@/types/canvas";
 
 export const ArchitectureIcon = (props: Props) => {
   const [showDragged, setShowDragged] = useState(false);
-  const [draggedSrc, setDraggedSrc] = useState("");
+  const [draggedImage, setDraggedImage] = useState({
+    src: "",
+    width: 0,
+    height: 0,
+  });
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const serviceList = ServiceSelector({ type: props.resources });
@@ -19,7 +23,7 @@ export const ArchitectureIcon = (props: Props) => {
   /* 要素を Jotai に追加する関数 */
   const setCanvasElementArray = useSetAtom(CanvasElement);
   const setCanvasElement = (newCanvasElement: CanvasElementObject) => {
-    setCanvasElementArray((prevArray) => [...prevArray, newCanvasElement]);
+    setCanvasElementArray((prevArray) => [newCanvasElement, ...prevArray]);
   };
 
   return (
@@ -43,7 +47,11 @@ export const ArchitectureIcon = (props: Props) => {
                 serviceIcon,
                 state
               );
-              setDraggedSrc(serviceIcon.src);
+              setDraggedImage({
+                src: serviceIcon.src,
+                width: serviceIcon.width,
+                height: serviceIcon.height,
+              });
             }}
           >
             <Image
@@ -60,10 +68,10 @@ export const ArchitectureIcon = (props: Props) => {
 
       {showDragged && (
         <Image
-          src={draggedSrc}
+          src={draggedImage.src}
           className="pointer-events-none opacity-50"
-          width={80}
-          height={80}
+          width={draggedImage.width}
+          height={draggedImage.height}
           style={{
             position: "fixed",
             left: position.x + "px",

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { CanvasElementObject, CanvasStateObject } from "@/types/canvas";
-import { GetCanvasPosition } from "./GetCanvasPosition";
+import { GetCanvasPosition } from "../GetCanvasPosition";
 import { AddCanvasElement } from "./AddCanvasElement";
 import { ValidateCanvasPosition } from "./ValidateCanvasPosition";
 

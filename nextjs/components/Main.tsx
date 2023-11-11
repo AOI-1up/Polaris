@@ -1,12 +1,16 @@
 "use client";
 import { useEffect, useRef } from "react";
+// import { throttle } from "lodash";
 import { useSetAtom, useAtomValue } from "jotai";
+import { UseCanvasState } from "@/hooks/UseCanvasState";
+import { UpdateCanvasElement } from "@/utils/updateCanvasElement";
 import {
   CanvasAtom,
   CanvasContainerAtom,
   ContextAtom,
 } from "./atom/CanvasState";
 import { CanvasElement } from "./atom/CanvasElement";
+import { CurrentCanvasElement } from "./atom/CurrentCanvasElement";
 
 export const Main = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,8 +21,9 @@ export const Main = () => {
   const setCanvasContainer = useSetAtom(CanvasContainerAtom);
   const setContext = useSetAtom(ContextAtom);
 
+  const canvasState = UseCanvasState();
+
   useEffect(() => {
-    /* Canvas を Jotai に格納する */
     const canvas = canvasRef.current;
     const canvasContainer = canvasContainerRef.current;
     const context = canvas?.getContext("2d");
@@ -34,9 +39,7 @@ export const Main = () => {
       (canvas.width - canvasContainer.offsetWidth) / 2;
     canvasContainer.scrollTop =
       (canvas.height - canvasContainer.offsetHeight) / 2;
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setCanvas, setCanvasContainer, setContext]);
 
   /* Jotai から要素を Canvas に追加する */
   useEffect(() => {
@@ -48,18 +51,40 @@ export const Main = () => {
       const icon = new Image();
       icon.src = element.src;
       icon.onload = () => {
-        context.drawImage(icon, element.x, element.y);
+        context.drawImage(
+          icon,
+          element.x,
+          element.y,
+          element.width,
+          element.height
+        );
       };
     });
-
     console.log(canvasElementArray);
   }, [canvasElementArray]);
+
+  /* 設定を開く要素の ID を Jotai に追加する */
+  const setCurrentCanvasElementId = useSetAtom(CurrentCanvasElement);
+  const setCurrentCanvasElement = (focusId: string) => {
+    setCurrentCanvasElementId(focusId);
+  };
+
+  // const mousemove = throttle(() => console.log("MouseMove..."), 200);
 
   return (
     <div
       className="overflow-scroll"
       style={{ width: "calc(100vw - 460px)", height: "calc(100vh - 50px)" }}
       ref={canvasContainerRef}
+      //onMouseMove={mousemove}
+      onMouseDown={(event) =>
+        UpdateCanvasElement(
+          event,
+          canvasState,
+          canvasElementArray,
+          setCurrentCanvasElement
+        )
+      }
     >
       <canvas ref={canvasRef} />
     </div>
