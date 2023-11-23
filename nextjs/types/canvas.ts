@@ -1,3 +1,5 @@
+import { EC2_Resources, Region_Resources } from "./resources";
+
 export interface CanvasStateObject {
   canvas: HTMLCanvasElement | null;
   canvasContainer: HTMLDivElement | null;
@@ -12,5 +14,5 @@ export type CanvasElementObject = {
   y: number;
   width: number;
   height: number;
-  resources: Record<string, unknown>;
+  resources: EC2_Resources | Region_Resources;
 };

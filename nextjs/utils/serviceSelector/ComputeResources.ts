@@ -7,7 +7,7 @@ export const ComputeResources = () => {
       height: 80,
       resources: {
         ami: "",
-        instance_type: "",
+        instance_type: "t2.micro",
         availability_zone: "",
         subnet_id: "",
         root_block_device: {

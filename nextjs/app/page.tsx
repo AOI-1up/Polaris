@@ -7,21 +7,27 @@ export const metadata = { title: "Polaris" };
 
 const Home = () => {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-blue-gray-900">
       <header className="h-[50px]">
         <Header />
       </header>
 
       <div className="flex flex-grow">
-        <nav className="w-[230px] min-w-[230px]">
+        <nav
+          className="w-[230px] min-w-[230px]"
+          style={{ height: "calc(100vh - 50px)" }}
+        >
           <Nav />
         </nav>
 
-        <main className="flex-grow ">
+        <main className="flex-grow">
           <Main />
         </main>
 
-        <aside className="w-[230px] min-w-[230px]">
+        <aside
+          className="w-[230px] min-w-[230px]"
+          style={{ height: "calc(100vh - 50px)" }}
+        >
           <Aside />
         </aside>
       </div>

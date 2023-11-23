@@ -11,9 +11,11 @@ export const UpdateCanvasElement = (
   const position = GetCanvasPosition(state, event.clientX, event.clientY);
   if (!position) return;
 
+  const { client, offset } = position;
+  if (client.x > offset.right || client.y > offset.bottom) return;
+
   const focusId = ValidateMousePosition(position, canvasElementArray);
-  if (!focusId) return;
-  setCurrentCanvasElement(focusId);
+  setCurrentCanvasElement(focusId || "");
 
   return;
 };
