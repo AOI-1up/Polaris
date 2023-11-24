@@ -56,7 +56,7 @@ export const Main = () => {
           element.x,
           element.y,
           element.width,
-          element.height
+          element.height,
         );
       };
     });
@@ -82,7 +82,7 @@ export const Main = () => {
           event,
           canvasState,
           canvasElementArray,
-          setCurrentCanvasElement
+          setCurrentCanvasElement,
         )
       }
     >

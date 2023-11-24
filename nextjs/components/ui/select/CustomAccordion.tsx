@@ -13,15 +13,15 @@ export const CustomAccordion = (props: Props) => {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   return (
-    <div className="select-none bg-gray-50 border-l-2 border-gray-300">
+    <div className="select-none border-l-2 border-gray-300 bg-gray-50">
       <Accordion
         open={open === 1}
         icon={<AccordionIcon id={1} open={open} />}
-        className="w-full flex flex-col"
+        className="flex w-full flex-col"
       >
         <AccordionHeader
           onClick={() => handleOpen(1)}
-          className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2 font-sans font-bold text-sm"
+          className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold"
         >
           {props.resources}
         </AccordionHeader>

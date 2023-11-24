@@ -3,7 +3,7 @@ import { Position } from "@/types/position";
 
 export const ValidateMousePosition = (
   position: Position,
-  canvasElementArray: CanvasElementObject[]
+  canvasElementArray: CanvasElementObject[],
 ) => {
   const { x, y } = position;
 

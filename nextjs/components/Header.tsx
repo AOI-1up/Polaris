@@ -1,7 +1,7 @@
 export const Header = () => {
   return (
-    <div className="w-screen h-[50px] flex justify-center items-center bg-gray-800 border-b-2 border-gray-300 select-none">
-      <div className="font-mono font-bold text-xl text-white tracking-widest">
+    <div className="flex h-[50px] w-screen select-none items-center justify-center border-b-2 border-gray-300 bg-gray-800">
+      <div className="font-mono text-xl font-bold tracking-widest text-white">
         Polaris
       </div>
     </div>

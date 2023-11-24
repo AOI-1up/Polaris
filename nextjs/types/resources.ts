@@ -8,6 +8,11 @@ export type Service = {
   type: ResourceType;
 };
 
+export type Resources =
+  | Record<string, unknown>
+  | EC2_Resources
+  | Region_Resources;
+
 export type EC2_Resources = {
   ami: string;
   instance_type: string;

@@ -7,7 +7,7 @@ export const metadata = { title: "Polaris" };
 
 const Home = () => {
   return (
-    <div className="flex flex-col h-screen text-blue-gray-900">
+    <div className="flex h-screen flex-col text-blue-gray-900">
       <header className="h-[50px]">
         <Header />
       </header>

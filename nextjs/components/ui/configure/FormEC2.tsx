@@ -16,8 +16,8 @@ export const FormEC2 = (props: Props) => {
 
   console.log(resources);
   return (
-    <div className="font-sans font-bold text-sm ">
-      <div className="h-[40px] px-4 py-2 border-b-[1px] border-gray-300">
+    <div className="font-sans text-sm font-bold ">
+      <div className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2">
         EC2 Setting
       </div>
       <InputField id="ami" onChange={handleInputChange} />

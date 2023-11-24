@@ -3,6 +3,7 @@ import { CanvasElementObject, CanvasStateObject } from "@/types/canvas";
 import { GetCanvasPosition } from "../GetCanvasPosition";
 import { AddCanvasElement } from "./AddCanvasElement";
 import { ValidateCanvasPosition } from "./ValidateCanvasPosition";
+import { Resources } from "@/types/resources";
 
 export const DragAndDrop = (
   setShowDragged: Dispatch<SetStateAction<boolean>>,
@@ -13,9 +14,9 @@ export const DragAndDrop = (
     src: string;
     width: number;
     height: number;
-    resources: Record<string, unknown>;
+    resources: Resources;
   },
-  state: CanvasStateObject
+  state: CanvasStateObject,
 ) => {
   /* アイコンをマウスカーソルに追従させる */
   const handleMouseMove = (event: MouseEvent) => {

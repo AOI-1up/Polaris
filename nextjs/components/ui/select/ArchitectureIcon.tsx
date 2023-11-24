@@ -27,11 +27,11 @@ export const ArchitectureIcon = (props: Props) => {
   };
 
   return (
-    <div className="w-full flex flex-wrap items-end">
+    <div className="flex w-full flex-wrap items-end">
       {serviceList.map((service, index) => (
-        <div key={index} className="flex w-1/4 justify-center mb-1">
+        <div key={index} className="mb-1 flex w-1/4 justify-center">
           <div
-            className="w-[45px] h-[45px] flex justify-center items-center hover:bg-gray-300 active:opacity-50 rounded"
+            className="flex h-[45px] w-[45px] items-center justify-center rounded hover:bg-gray-300 active:opacity-50"
             onMouseDown={() => {
               const serviceIcon = {
                 name: service.name,
@@ -45,7 +45,7 @@ export const ArchitectureIcon = (props: Props) => {
                 setPosition,
                 setCanvasElement,
                 serviceIcon,
-                state
+                state,
               );
               setDraggedImage({
                 src: serviceIcon.src,

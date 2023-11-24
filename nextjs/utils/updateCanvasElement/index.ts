@@ -6,7 +6,7 @@ export const UpdateCanvasElement = (
   event: React.MouseEvent<HTMLDivElement>,
   state: CanvasStateObject,
   canvasElementArray: CanvasElementObject[],
-  setCurrentCanvasElement: (focusId: string) => void
+  setCurrentCanvasElement: (focusId: string) => void,
 ) => {
   const position = GetCanvasPosition(state, event.clientX, event.clientY);
   if (!position) return;

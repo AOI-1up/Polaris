@@ -10,13 +10,11 @@ export const Aside = () => {
   const focusId = useAtomValue(CurrentCanvasElement);
 
   const focusedElement = canvasElementArray.find(
-    (element) => element.id === focusId
+    (element) => element.id === focusId,
   );
 
   return (
-    <div
-      className="w-full h-full overflow-y-scroll select-none bg-gray-50 border-l-2 border-gray-300 hide-scrollbar"
-    >
+    <div className="hide-scrollbar h-full w-full select-none overflow-y-scroll border-l-2 border-gray-300 bg-gray-50">
       {focusedElement?.service == "EC2" && (
         <FormEC2 resources={focusedElement.resources as EC2_Resources} />
       )}

@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { CanvasElementObject } from "@/types/canvas";
 import { Position } from "@/types/position";
+import { Resources } from "@/types/resources";
 
 export const AddCanvasElement = (
   setCanvasElement: (newCanvasElement: CanvasElementObject) => void,
@@ -9,9 +10,9 @@ export const AddCanvasElement = (
     src: string;
     width: number;
     height: number;
-    resources: Record<string, unknown>;
+    resources: Resources;
   },
-  position: Position
+  position: Position,
 ) => {
   // width height resources も props で受け取る
   const newCanvasElement = {

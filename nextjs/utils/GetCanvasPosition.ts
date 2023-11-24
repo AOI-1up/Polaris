@@ -3,7 +3,7 @@ import { CanvasStateObject } from "@/types/canvas";
 export const GetCanvasPosition = (
   state: CanvasStateObject,
   clientX: number,
-  clientY: number
+  clientY: number,
 ) => {
   if (!state.canvas || !state.canvasContainer || !state.context) return;
 
