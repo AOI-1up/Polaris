@@ -3,7 +3,7 @@ import { useAtomValue } from "jotai";
 import { CanvasElement } from "./atom/CanvasElement";
 import { CurrentCanvasElement } from "./atom/CurrentCanvasElement";
 import { EC2_Resources } from "@/types/resources";
-import { FormEC2 } from "./ui/configure/FormEC2";
+import { InputForm } from "./ui/configure/InputForm";
 
 export const Aside = () => {
   const canvasElementArray = useAtomValue(CanvasElement);
@@ -16,8 +16,9 @@ export const Aside = () => {
 
   return (
     <div className="hide-scrollbar h-full w-full select-none overflow-y-scroll border-l-2 border-gray-300 bg-gray-50">
+      {!focusedElement && <div>Terraform Code</div>}
       {focusedElement?.service == "EC2" && (
-        <FormEC2
+        <InputForm
           resources={focusedElement.resources as EC2_Resources}
           index={focusedIndex}
         />
