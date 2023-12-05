@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "pulkitgangwar.nextjs-snippets",
+    "ibm.output-colorizer",
+    "csstools.postcss",
+    "streetsidesoftware.code-spell-checker",
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "ecmel.vscode-html-css",
+    "oderwat.indent-rainbow",
+    "visualstudioexptteam.vscodeintellicode",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "ionutvmi.path-autocomplete",
+    "bradlc.vscode-tailwindcss",
+    "shardulm94.trailing-spaces",
+    "mosapride.zenkaku"
+  ]
+}

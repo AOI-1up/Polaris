@@ -77,7 +77,7 @@ export const Main = () => {
   return (
     <div
       className="overflow-scroll"
-      style={{ width: "calc(100vw - 460px)", height: "calc(100vh - 50px)" }}
+      style={{ width: "calc(100vw - 575px)", height: "calc(100vh - 50px)" }}
       ref={canvasContainerRef}
       //onMouseMove={mousemove}
       onMouseDown={(event) =>
