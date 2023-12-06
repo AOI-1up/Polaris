@@ -25,7 +25,7 @@ const Home = () => {
         </main>
 
         <aside
-          className="w-[345px] min-w-[345px]"
+          className="w-[330px] min-w-[330px]"
           style={{ height: "calc(100vh - 50px)" }}
         >
           <Aside />

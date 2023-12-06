@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { EC2_Resources } from "@/types/resources";
 import { CanvasElement } from "@/components/atom/CanvasElement";
 import { useAtom } from "jotai";
+import set from "lodash/set";
 
 interface Props {
   resources: EC2_Resources;
@@ -25,7 +26,11 @@ export const InputForm = (props: Props) => {
   }, [props.index, canvasElementArray, resources, setCanvasElementArray]);
 
   const handleInputChange = (id: string, value: string) => {
-    setResources((prevResources) => ({ ...prevResources, [id]: value }));
+    setResources((prevResources) => {
+      const updatedResources = { ...prevResources };
+      set(updatedResources, id, value);
+      return updatedResources;
+    });
   };
 
   const createInput = (resources: EC2_Resources, name = "") => {
