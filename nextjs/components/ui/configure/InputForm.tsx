@@ -3,6 +3,7 @@ import { EC2_Resources } from "@/types/resources";
 import { CanvasElement } from "@/components/atom/CanvasElement";
 import { useAtom } from "jotai";
 import set from "lodash/set";
+import { AdvancedInput } from "./AdvancedInput";
 
 interface Props {
   resources: EC2_Resources;
@@ -37,20 +38,16 @@ export const InputForm = (props: Props) => {
     return Object.entries(resources).map(([key, value]) => {
       const newName = name ? `${name}.${key}` : key;
       if (value !== null && typeof value === "object") {
-        return (
-          <div key={newName}>
-            <div>{key}</div>
-            {createInput(value as never, newName)}
-          </div>
-        );
+        return <div key={newName}>{createInput(value as never, newName)}</div>;
       } else {
         return (
-          <div key={newName}>
+          <div key={newName} className="px-4">
             <div>{key}</div>
             <input
               type="text"
               name={newName}
               value={value as string}
+              className="mb-2 mt-1 w-full rounded border-b-[1px] border-r-[1px] border-gray-300 p-1 font-light"
               onChange={(event) => {
                 handleInputChange(newName, event.target.value);
               }}
@@ -61,5 +58,13 @@ export const InputForm = (props: Props) => {
     });
   };
 
-  return <div>{createInput(resources)}</div>;
+  return (
+    <div className="font-sans text-sm font-bold">
+      <div className="border-b-[1px] border-gray-300 px-4 py-2">
+        Basic Settings
+      </div>
+      <div className="pt-2">{createInput(resources)}</div>
+      <AdvancedInput />
+    </div>
+  );
 };

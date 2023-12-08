@@ -47,22 +47,19 @@ export const Main = () => {
     const context = canvas?.getContext("2d");
     if (!canvas || !context) return;
 
-    canvasElementArray
-      .slice()
-      .reverse()
-      .forEach((element) => {
-        const icon = new Image();
-        icon.src = element.src;
-        icon.onload = () => {
-          context.drawImage(
-            icon,
-            element.x,
-            element.y,
-            element.width,
-            element.height,
-          );
-        };
-      });
+    canvasElementArray.forEach((element) => {
+      const icon = new Image();
+      icon.src = element.src;
+      icon.onload = () => {
+        context.drawImage(
+          icon,
+          element.x,
+          element.y,
+          element.width,
+          element.height,
+        );
+      };
+    });
     console.log(canvasElementArray);
   }, [canvasElementArray]);
 

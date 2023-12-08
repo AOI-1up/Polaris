@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { EC2_Resources } from "@/types/resources";
 import { CurrentDisplayCode } from "@/components/atom/CurrentDisplayCode";
 import { GenerateEC2_tf } from "@/utils/convertToTerraform/GenerateEC2_tf";
+import AceEditor from "react-ace";
 
 export const DisplayCode = () => {
   const [terraform, setTerraform] = useState("");
@@ -28,14 +29,50 @@ export const DisplayCode = () => {
   }, [canvasElementArray, showCode]);
 
   return (
-    <div className="h-full w-full">
-      Terraform Code Block
-      <div className="mx-5 flex justify-between">
-        <button onClick={() => setShowCode("main")}>main</button>
-        <button onClick={() => setShowCode("EC2")}>EC2</button>
-        <button onClick={() => setShowCode("VPC")}>VPC</button>
+    <div className="flex h-full w-full flex-col">
+      <div className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold">
+        Terraform Code Display
       </div>
-      <textarea className="h-full w-full" value={terraform} readOnly />
+      <div className="flex justify-between border-b-[1px] border-gray-300 px-10 py-1 font-sans text-sm font-bold">
+        <button
+          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
+            showCode === "main" ? "" : "text-gray-400"
+          }`}
+          onClick={() => setShowCode("main")}
+        >
+          main
+        </button>
+        <button
+          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
+            showCode === "EC2" ? "" : "text-gray-400"
+          }`}
+          onClick={() => setShowCode("EC2")}
+        >
+          EC2
+        </button>
+        <button
+          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
+            showCode === "VPC" ? "" : "text-gray-400"
+          }`}
+          onClick={() => setShowCode("VPC")}
+        >
+          VPC
+        </button>
+      </div>
+      <div className="flex-grow">
+        <AceEditor
+          theme="github"
+          name="Terraform_Code"
+          width="100%"
+          height="100%"
+          editorProps={{ $blockScrolling: true }}
+          value={terraform}
+          setOptions={{
+            showLineNumbers: true,
+          }}
+          readOnly
+        />
+      </div>
     </div>
   );
 };

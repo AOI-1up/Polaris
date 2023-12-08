@@ -23,7 +23,7 @@ export const ArchitectureIcon = (props: Props) => {
   /* 要素を Jotai に追加する関数 */
   const setCanvasElementArray = useSetAtom(CanvasElement);
   const setCanvasElement = (newCanvasElement: CanvasElementObject) => {
-    setCanvasElementArray((prevArray) => [newCanvasElement, ...prevArray]);
+    setCanvasElementArray((prevArray) => [...prevArray, newCanvasElement]);
   };
 
   return (

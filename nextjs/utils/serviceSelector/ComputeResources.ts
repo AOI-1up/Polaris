@@ -6,6 +6,9 @@ export const ComputeResources = () => {
       width: 80,
       height: 80,
       resources: {
+        tags: {
+          Name: "",
+        },
         ami: "",
         instance_type: "t2.micro",
         availability_zone: "",
@@ -13,9 +16,6 @@ export const ComputeResources = () => {
         root_block_device: {
           volume_type: "",
           volume_size: "",
-        },
-        tags: {
-          Name: "",
         },
       },
     },

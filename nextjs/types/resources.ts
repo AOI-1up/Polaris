@@ -14,6 +14,9 @@ export type Resources =
   | Region_Resources;
 
 export type EC2_Resources = {
+  tags: {
+    Name: string;
+  };
   ami: string;
   instance_type: string;
   availability_zone: string;
@@ -21,9 +24,6 @@ export type EC2_Resources = {
   root_block_device: {
     volume_type: string;
     volume_size: string;
-  };
-  tags: {
-    Name: string;
   };
 };
 

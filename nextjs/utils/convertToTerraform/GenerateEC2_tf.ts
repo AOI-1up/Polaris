@@ -16,7 +16,7 @@ export const GenerateEC2_tf = (resourcesArray: EC2_Resources[]) => {
   tags = {
     Name = "${resources.tags.Name}"
   }
-}\n\n`
+}\n`
     );
   }, "");
 
