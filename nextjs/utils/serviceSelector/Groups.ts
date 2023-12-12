@@ -3,7 +3,7 @@ export const Groups = () => {
     {
       name: "Region",
       src: "/resources/groups/region.png",
-      width: 200,
+      width: 400,
       height: 200,
       resources: {},
     },

@@ -30,7 +30,7 @@ export const DisplayCode = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold">
+      <div className="flex h-[40px] items-center border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold">
         Terraform Code Display
       </div>
       <div className="flex justify-between border-b-[1px] border-gray-300 px-10 py-1 font-sans text-sm font-bold">

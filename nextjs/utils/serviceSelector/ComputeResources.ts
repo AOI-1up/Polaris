@@ -10,7 +10,7 @@ export const ComputeResources = () => {
           Name: "",
         },
         ami: "",
-        instance_type: "t2.micro",
+        instance_type: "",
         availability_zone: "",
         subnet_id: "",
         root_block_device: {

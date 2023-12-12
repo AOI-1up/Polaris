@@ -16,7 +16,7 @@ export const Aside = () => {
   const focusedElement = canvasElementArray[focusedIndex];
 
   return (
-    <div className="hide-scrollbar h-full w-full select-none overflow-y-scroll border-l-2 border-gray-300 bg-gray-50">
+    <div className="hide-scrollbar h-full w-full select-none overflow-y-scroll border-l-2 border-gray-300 bg-gray-100">
       {!focusedElement && <DisplayCode />}
       {focusedElement?.service == "EC2" && (
         <InputForm

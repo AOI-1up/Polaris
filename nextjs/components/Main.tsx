@@ -39,6 +39,24 @@ export const Main = () => {
       (canvas.width - canvasContainer.offsetWidth) / 2;
     canvasContainer.scrollTop =
       (canvas.height - canvasContainer.offsetHeight) / 2;
+
+    const gridSpacing = 30;
+    context.strokeStyle = "#ddd";
+    context.setLineDash([2, 4]);
+
+    for (let x = 0; x <= canvas.width; x += gridSpacing) {
+      context.beginPath();
+      context.moveTo(x, 0);
+      context.lineTo(x, canvas.height);
+      context.stroke();
+    }
+    for (let y = 0; y <= canvas.height; y += gridSpacing) {
+      context.beginPath();
+      context.moveTo(0, y);
+      context.lineTo(canvas.width, y);
+      context.stroke();
+    }
+    context.setLineDash([]);
   }, [setCanvas, setCanvasContainer, setContext]);
 
   /* Jotai から要素を Canvas に追加する */
