@@ -25,6 +25,7 @@ export type EC2_Resources = {
     volume_type: string;
     volume_size: string;
   };
+  optional: string;
 };
 
 export type Region_Resources = {

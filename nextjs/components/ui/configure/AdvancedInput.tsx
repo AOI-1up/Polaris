@@ -1,12 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
 import { AccordionIcon } from "../AccordionIcon";
+import { EC2_Resources } from "@/types/resources";
+import { useAtom } from "jotai";
+import { CanvasElement } from "@/components/atom/CanvasElement";
 
-export const AdvancedInput = () => {
+interface Props {
+  resources: EC2_Resources;
+  index: number;
+}
+
+export const AdvancedInput = (props: Props) => {
+  const [resources, setResources] = useState(props.resources);
+  const [canvasElementArray, setCanvasElementArray] = useAtom(CanvasElement);
+
+  useEffect(() => {
+    setResources(props.resources);
+  }, [props.resources]);
+
+  useEffect(() => {
+    setCanvasElementArray((prevArray) => {
+      const newArray = prevArray;
+      newArray[props.index].resources = resources;
+      return newArray;
+    });
+  }, [props.index, canvasElementArray, resources, setCanvasElementArray]);
+
+  const handleTextareaChange = (value: string) => {
+    setResources((prevResources) => {
+      const updatedResources = { ...prevResources };
+      updatedResources.optional = value;
+      return updatedResources;
+    });
+  };
+
   const [open, setOpen] = useState(0);
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
@@ -25,7 +56,11 @@ export const AdvancedInput = () => {
       <AccordionBody className="w-full border-b-[1px] border-gray-300 px-2 py-1 text-blue-gray-900">
         <div className="px-4 font-sans text-sm font-bold">
           Manual
-          <textarea className="my-2 h-[200px] w-full resize-none rounded border-b-[1px] border-r-[1px] border-gray-300 p-1 font-light" />
+          <textarea
+            value={resources.optional}
+            className="my-2 h-[200px] w-full resize-none rounded border-b-[1px] border-r-[1px] border-gray-300 p-1 font-light"
+            onChange={(event) => handleTextareaChange(event.target.value)}
+          />
         </div>
       </AccordionBody>
     </Accordion>

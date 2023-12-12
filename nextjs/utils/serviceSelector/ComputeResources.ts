@@ -17,6 +17,7 @@ export const ComputeResources = () => {
           volume_type: "",
           volume_size: "",
         },
+        optional: "",
       },
     },
   ];

@@ -2,6 +2,11 @@ import { EC2_Resources } from "@/types/resources";
 
 export const GenerateEC2_tf = (resourcesArray: EC2_Resources[]) => {
   const code = resourcesArray.reduce((acc, resources) => {
+    const optional = resources.optional
+      .split("\n")
+      .map((line) => (line ? "  " + line : line))
+      .join("\n");
+
     return (
       acc +
       `resource "aws_instance" "${resources.tags.Name}" {
@@ -15,8 +20,7 @@ export const GenerateEC2_tf = (resourcesArray: EC2_Resources[]) => {
   }
   tags = {
     Name = "${resources.tags.Name}"
-  }
-}\n`
+  }${resources.optional ? `\n${optional}\n}\n` : "\n}\n"}`
     );
   }, "");
 

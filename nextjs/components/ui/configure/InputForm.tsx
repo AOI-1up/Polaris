@@ -45,6 +45,8 @@ export const InputForm = (props: Props) => {
       const newName = name ? `${name}.${key}` : key;
       if (value !== null && typeof value === "object") {
         return <div key={newName}>{createInput(value as never, newName)}</div>;
+      } else if (key === "optional") {
+        return;
       } else {
         return (
           <div key={newName} className="px-4 font-sans text-sm font-bold">
@@ -85,7 +87,7 @@ export const InputForm = (props: Props) => {
         </AccordionBody>
       </Accordion>
 
-      <AdvancedInput />
+      <AdvancedInput resources={props.resources} index={props.index} />
     </div>
   );
 };
