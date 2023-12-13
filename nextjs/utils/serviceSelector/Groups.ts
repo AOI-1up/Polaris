@@ -1,10 +1,10 @@
 export const Groups = () => {
   const serviceList = [
     {
-      name: "Region",
-      src: "/resources/groups/region.png",
-      width: 400,
-      height: 200,
+      name: "VPC",
+      src: "/resources/groups/vpc.svg",
+      width: 40,
+      height: 40,
       resources: {},
     },
   ];

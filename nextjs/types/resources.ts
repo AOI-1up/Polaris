@@ -11,7 +11,7 @@ export type Service = {
 export type Resources =
   | Record<string, unknown>
   | EC2_Resources
-  | Region_Resources;
+  | VPC_Resources;
 
 export type EC2_Resources = {
   tags: {
@@ -28,7 +28,7 @@ export type EC2_Resources = {
   optional: string;
 };
 
-export type Region_Resources = {
+export type VPC_Resources = {
   tags: {
     Name: string;
   };

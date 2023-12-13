@@ -30,10 +30,10 @@ export const DisplayCode = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="flex h-[40px] items-center border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold">
+      <div className="flex h-[40px] items-center border-b-[1px] border-gray-400 px-4 py-2 font-sans text-sm font-bold">
         Terraform Code Display
       </div>
-      <div className="flex justify-between border-b-[1px] border-gray-300 px-10 py-1 font-sans text-sm font-bold">
+      <div className="flex justify-between border-b-[1px] border-gray-400 px-10 py-1 font-sans text-sm font-bold">
         <button
           className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
             showCode === "main" ? "" : "text-gray-400"

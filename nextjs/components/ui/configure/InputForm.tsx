@@ -55,7 +55,7 @@ export const InputForm = (props: Props) => {
               type="text"
               name={newName}
               value={value as string}
-              className="mb-2 mt-1 w-full rounded border-b-[1px] border-r-[1px] border-gray-300 p-1 font-light"
+              className="mb-2 mt-1 w-full rounded border-b-[1px] border-r-[1px] border-gray-400 p-1 font-light"
               onChange={(event) => {
                 handleInputChange(newName, event.target.value);
               }}
@@ -78,11 +78,11 @@ export const InputForm = (props: Props) => {
       >
         <AccordionHeader
           onClick={() => handleOpen(1)}
-          className="h-[40px] border-y-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold"
+          className="h-[40px] border-y-[1px] border-gray-400 px-4 py-2 font-sans text-sm font-bold"
         >
           Basic Settings
         </AccordionHeader>
-        <AccordionBody className="w-full border-b-[1px] border-gray-300 px-2 py-1 text-blue-gray-900">
+        <AccordionBody className="w-full border-b-[1px] border-gray-400 px-2 py-1 text-blue-gray-900">
           <div className="py-2 font-sans text-sm">{createInput(resources)}</div>
         </AccordionBody>
       </Accordion>

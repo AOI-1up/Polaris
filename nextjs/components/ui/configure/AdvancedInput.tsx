@@ -49,16 +49,16 @@ export const AdvancedInput = (props: Props) => {
     >
       <AccordionHeader
         onClick={() => handleOpen(1)}
-        className="h-[40px] border-b-[1px] border-gray-300 px-4 py-2 font-sans text-sm font-bold"
+        className="h-[40px] border-b-[1px] border-gray-400 px-4 py-2 font-sans text-sm font-bold"
       >
         Advanced Settings
       </AccordionHeader>
-      <AccordionBody className="w-full border-b-[1px] border-gray-300 px-2 py-1 text-blue-gray-900">
+      <AccordionBody className="w-full border-b-[1px] border-gray-400 px-2 py-1 text-blue-gray-900">
         <div className="px-4 font-sans text-sm font-bold">
           Manual
           <textarea
             value={resources.optional}
-            className="my-2 h-[200px] w-full resize-none rounded border-b-[1px] border-r-[1px] border-gray-300 p-1 font-light"
+            className="my-2 h-[200px] w-full resize-none rounded border-b-[1px] border-r-[1px] border-gray-400 p-1 font-light"
             onChange={(event) => handleTextareaChange(event.target.value)}
           />
         </div>
