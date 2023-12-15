@@ -13,7 +13,7 @@ export const CustomAccordion = (props: Props) => {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   return (
-    <div className="select-none border-l-2 border-gray-400 bg-gray-100">
+    <div className="select-none bg-gray-100">
       <Accordion
         open={open === 1}
         icon={<AccordionIcon id={1} open={open} />}

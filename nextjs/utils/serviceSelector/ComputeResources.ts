@@ -19,6 +19,7 @@ export const ComputeResources = () => {
         },
         optional: "",
       },
+      groups: {},
     },
   ];
 

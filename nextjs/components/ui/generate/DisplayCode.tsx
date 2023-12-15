@@ -61,7 +61,6 @@ export const DisplayCode = () => {
       </div>
       <div className="flex-grow">
         <AceEditor
-          theme="github"
           name="Terraform_Code"
           width="100%"
           height="100%"

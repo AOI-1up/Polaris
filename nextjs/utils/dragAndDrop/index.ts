@@ -3,19 +3,13 @@ import { CanvasElementObject, CanvasStateObject } from "@/types/canvas";
 import { GetCanvasPosition } from "../GetCanvasPosition";
 import { AddCanvasElement } from "./AddCanvasElement";
 import { ValidateCanvasPosition } from "./ValidateCanvasPosition";
-import { Resources } from "@/types/resources";
+import { ServiceIcon } from "@/types/service";
 
 export const DragAndDrop = (
   setShowDragged: Dispatch<SetStateAction<boolean>>,
   setPosition: (newValue: { x: number; y: number }) => void,
   setCanvasElement: (newCanvasElement: CanvasElementObject) => void,
-  serviceIcon: {
-    name: string;
-    src: string;
-    width: number;
-    height: number;
-    resources: Resources;
-  },
+  serviceIcon: ServiceIcon,
   state: CanvasStateObject,
 ) => {
   /* アイコンをマウスカーソルに追従させる */

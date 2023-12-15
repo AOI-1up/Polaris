@@ -66,6 +66,19 @@ export const Main = () => {
     if (!canvas || !context) return;
 
     canvasElementArray.forEach((element) => {
+      if (Object.keys(element.groups).length > 0) {
+        context.beginPath();
+        context.rect(
+          element.x,
+          element.y,
+          element.groups.width as number,
+          element.groups.height as number,
+        );
+        context.lineWidth = 2;
+        context.strokeStyle = element.groups.color as string;
+        context.stroke();
+      }
+
       const icon = new Image();
       icon.src = element.src;
       icon.onload = () => {

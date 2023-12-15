@@ -39,6 +39,7 @@ export const ArchitectureIcon = (props: Props) => {
                 width: service.width,
                 height: service.height,
                 resources: service.resources,
+                groups: service.groups,
               };
               DragAndDrop(
                 setShowDragged,

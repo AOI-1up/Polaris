@@ -1,3 +1,4 @@
+import { Groups } from "./groups";
 import { Resources } from "./resources";
 
 export interface CanvasStateObject {
@@ -15,4 +16,5 @@ export type CanvasElementObject = {
   width: number;
   height: number;
   resources: Resources;
+  groups: Groups;
 };

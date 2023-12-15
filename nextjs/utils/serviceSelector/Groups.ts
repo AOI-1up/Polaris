@@ -6,6 +6,11 @@ export const Groups = () => {
       width: 40,
       height: 40,
       resources: {},
+      groups: {
+        width: 300,
+        height: 200,
+        color: "#8C4FFF",
+      },
     },
   ];
 
