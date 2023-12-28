@@ -8,10 +8,9 @@ export type Service = {
   type: ResourceType;
 };
 
-export type Resources =
-  | Record<string, unknown>
-  | EC2_Resources
-  | VPC_Resources;
+export type Resources = EC2_Resources | VPC_Resources;
+
+export type CombinedResources = EC2_Resources & VPC_Resources;
 
 export type EC2_Resources = {
   tags: {
@@ -32,4 +31,6 @@ export type VPC_Resources = {
   tags: {
     Name: string;
   };
+  cidr_block: string;
+  optional: string;
 };

@@ -1,9 +1,10 @@
 import { CanvasElement } from "@/components/atom/CanvasElement";
 import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
-import { EC2_Resources } from "@/types/resources";
+import { EC2_Resources, VPC_Resources } from "@/types/resources";
 import { CurrentDisplayCode } from "@/components/atom/CurrentDisplayCode";
 import { GenerateEC2_tf } from "@/utils/convertToTerraform/GenerateEC2_tf";
+import { GenerateVPC_tf } from "@/utils/convertToTerraform/GenerateVPC_tf";
 import AceEditor from "react-ace";
 
 export const DisplayCode = () => {
@@ -12,16 +13,20 @@ export const DisplayCode = () => {
   const canvasElementArray = useAtomValue(CanvasElement);
 
   useEffect(() => {
+    const resourcesArray = canvasElementArray
+      .filter((element) => element.service === showCode)
+      .map((element) => element.resources);
+
     switch (showCode) {
       case "main":
         setTerraform("");
         break;
       case "EC2":
-        const resourcesArray = canvasElementArray
-          .filter((element) => element.service === showCode)
-          .map((element) => element.resources);
-        const code = GenerateEC2_tf(resourcesArray as EC2_Resources[]);
-        setTerraform(code);
+        setTerraform(GenerateEC2_tf(resourcesArray as EC2_Resources[]));
+        break;
+      case "VPC" || "Public_Subnet":
+        console.log(resourcesArray, showCode);
+        setTerraform(GenerateVPC_tf(resourcesArray as VPC_Resources[]));
         break;
       default:
         break;
@@ -34,30 +39,17 @@ export const DisplayCode = () => {
         Terraform Code Display
       </div>
       <div className="flex justify-between border-b-[1px] border-gray-400 px-10 py-1 font-sans text-sm font-bold">
-        <button
-          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
-            showCode === "main" ? "" : "text-gray-400"
-          }`}
-          onClick={() => setShowCode("main")}
-        >
-          main
-        </button>
-        <button
-          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
-            showCode === "EC2" ? "" : "text-gray-400"
-          }`}
-          onClick={() => setShowCode("EC2")}
-        >
-          EC2
-        </button>
-        <button
-          className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
-            showCode === "VPC" ? "" : "text-gray-400"
-          }`}
-          onClick={() => setShowCode("VPC")}
-        >
-          VPC
-        </button>
+        {["main", "EC2", "VPC"].map((code) => (
+          <button
+            key={code}
+            className={`w-[50px] rounded p-1 hover:bg-gray-300 active:opacity-50 ${
+              showCode === code ? "" : "text-gray-400"
+            }`}
+            onClick={() => setShowCode(code)}
+          >
+            {code}
+          </button>
+        ))}
       </div>
       <div className="flex-grow">
         <AceEditor

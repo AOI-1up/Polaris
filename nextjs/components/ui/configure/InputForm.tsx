@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { EC2_Resources } from "@/types/resources";
+import { CombinedResources } from "@/types/resources";
 import { CanvasElement } from "@/components/atom/CanvasElement";
 import { useAtom } from "jotai";
 import set from "lodash/set";
@@ -12,7 +12,7 @@ import { AccordionIcon } from "../AccordionIcon";
 import { AdvancedInput } from "./AdvancedInput";
 
 interface Props {
-  resources: EC2_Resources;
+  resources: CombinedResources;
   index: number;
 }
 
@@ -40,7 +40,7 @@ export const InputForm = (props: Props) => {
     });
   };
 
-  const createInput = (resources: EC2_Resources, name = "") => {
+  const createInput = (resources: CombinedResources, name = "") => {
     return Object.entries(resources).map(([key, value]) => {
       const newName = name ? `${name}.${key}` : key;
       if (value !== null && typeof value === "object") {
