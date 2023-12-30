@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.4",
+    "fast-sort": "^3.4.0",
     "jotai": "^2.5.0",
     "lodash": "^4.17.21",
     "next": "14.0.1",
