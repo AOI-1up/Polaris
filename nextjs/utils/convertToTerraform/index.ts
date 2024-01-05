@@ -4,12 +4,14 @@ import { GenEC2 } from "./GenEC2";
 import { GenVPC } from "./GenVPC";
 import {
   EC2_Resources,
+  IGW_Resources,
   Region_Resources,
   Subnet_Resources,
   VPC_Resources,
 } from "@/types/resources";
 import { GenSubnet } from "./GenSubnet";
 import { GenRegion } from "./GenRegion";
+import { GenIGW } from "./GenIGW"
 
 export const convertToTerraform = (
   canvasElementArray: CanvasElementObject[],
@@ -27,6 +29,8 @@ export const convertToTerraform = (
       return GenSubnet(element.resources as Subnet_Resources);
     else if (element.service === "Region")
       return GenRegion(element.resources as Region_Resources);
+    else if (element.service === "Internet_Gateway")
+      return GenIGW(element.resources as IGW_Resources)
   });
 
   return code.join("\n");

@@ -2,6 +2,7 @@ import { match } from "ts-pattern";
 import { Service } from "@/types/resources";
 import { ComputeResources } from "./ComputeResources";
 import { Groups } from "./Groups";
+import { Networking } from "./Networking";
 
 export const ServiceSelector = (service: Service) => {
   const { serviceList } = match(service.type)
@@ -10,6 +11,9 @@ export const ServiceSelector = (service: Service) => {
     }))
     .with("Groups", () => ({
       serviceList: Groups(),
+    }))
+    .with("Networking", () => ({
+      serviceList: Networking(),
     }))
     .exhaustive();
 

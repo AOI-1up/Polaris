@@ -1,4 +1,4 @@
-export type ResourceType = "Compute Resources" | "Groups";
+export type ResourceType = "Compute Resources" | "Groups" | "Networking";
 
 export interface Props {
   resources: ResourceType;
@@ -12,12 +12,14 @@ export type Resources =
   | EC2_Resources
   | Region_Resources
   | VPC_Resources
-  | Subnet_Resources;
+  | Subnet_Resources
+  | IGW_Resources;
 
 export type CombinedResources = EC2_Resources &
   Region_Resources &
   VPC_Resources &
-  Subnet_Resources;
+  Subnet_Resources &
+  IGW_Resources;
 
 export type EC2_Resources = {
   tags: {
@@ -55,4 +57,11 @@ export type Subnet_Resources = {
   cidr_block: string;
   availability_zone: string;
   optional: string;
+};
+
+export type IGW_Resources = {
+  tags: {
+    Name: string;
+  };
+  vpc_id: string;
 };
