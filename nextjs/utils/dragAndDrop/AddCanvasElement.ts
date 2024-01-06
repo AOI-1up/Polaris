@@ -17,6 +17,7 @@ export const AddCanvasElement = (
     y: position.y,
     width: service.width,
     height: service.height,
+    render: service.render,
     resources: service.resources,
     groups: service.groups,
   };

@@ -5,6 +5,7 @@ export const ComputeResources = () => {
       src: "/resources/compute/ec2.svg",
       width: 80,
       height: 80,
+      render: true,
       resources: {
         tags: {
           Name: "",

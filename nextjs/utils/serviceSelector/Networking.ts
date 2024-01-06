@@ -5,6 +5,7 @@ export const Networking = () => {
       src: "/resources/networking/internet_gateway.svg",
       width: 40,
       height: 40,
+      render: true,
       resources: {
         tags: {
           Name: "",

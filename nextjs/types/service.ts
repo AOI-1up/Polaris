@@ -6,6 +6,7 @@ export interface ServiceIcon {
   src: string;
   width: number;
   height: number;
+  render: boolean;
   resources: Resources;
   groups: Groups;
 }

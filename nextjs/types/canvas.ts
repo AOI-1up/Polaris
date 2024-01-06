@@ -15,6 +15,7 @@ export type CanvasElementObject = {
   y: number;
   width: number;
   height: number;
+  render: boolean;
   resources: Resources;
   groups: Groups;
 };

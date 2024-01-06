@@ -16,6 +16,7 @@ export const Main = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const canvasElementArray = useAtomValue(CanvasElement);
+  const initCanvasElementArray = useRef(canvasElementArray);
 
   const setCanvas = useSetAtom(CanvasAtom);
   const setCanvasContainer = useSetAtom(CanvasContainerAtom);
@@ -57,6 +58,10 @@ export const Main = () => {
       context.stroke();
     }
     context.setLineDash([]);
+
+    initCanvasElementArray.current.forEach((element) => {
+      element.render = true;
+    });
   }, [setCanvas, setCanvasContainer, setContext]);
 
   /* Jotai から要素を Canvas に追加する */
@@ -66,6 +71,7 @@ export const Main = () => {
     if (!canvas || !context) return;
 
     canvasElementArray.forEach((element) => {
+      if (!element.render) return;
       const icon = new Image();
       icon.src = element.src;
       icon.onload = () => {
@@ -92,6 +98,7 @@ export const Main = () => {
           context.fillText(element.service, element.x + 50, element.y + 25);
         }
       };
+      element.render = false;
     });
     console.log(canvasElementArray);
   }, [canvasElementArray]);

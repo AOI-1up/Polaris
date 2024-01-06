@@ -5,6 +5,7 @@ export const Groups = () => {
       src: "/resources/groups/region.svg",
       width: 40,
       height: 40,
+      render: true,
       resources: {
         region: "",
         optional: "",
@@ -20,6 +21,7 @@ export const Groups = () => {
       src: "/resources/groups/vpc.svg",
       width: 40,
       height: 40,
+      render: true,
       resources: {
         tags: {
           Name: "",
@@ -38,6 +40,7 @@ export const Groups = () => {
       src: "/resources/groups/private_subnet.svg",
       width: 40,
       height: 40,
+      render: true,
       resources: {
         tags: {
           Name: "",
@@ -58,6 +61,7 @@ export const Groups = () => {
       src: "/resources/groups/public_subnet.svg",
       width: 40,
       height: 40,
+      render: true,
       resources: {
         tags: {
           Name: "",

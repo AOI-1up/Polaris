@@ -38,6 +38,7 @@ export const ArchitectureIcon = (props: Props) => {
                 src: service.src,
                 width: service.width,
                 height: service.height,
+                render: service.render,
                 resources: service.resources,
                 groups: service.groups,
               };
