@@ -1,8 +1,7 @@
 import { CanvasElementObject } from "@/types/canvas";
-import { Position } from "@/types/position";
 
 export const ValidateMousePosition = (
-  position: Position,
+  position: { x: number; y: number },
   canvasElementArray: CanvasElementObject[],
 ) => {
   const { x, y } = position;
@@ -15,7 +14,6 @@ export const ValidateMousePosition = (
         x >= canvasElement.x && x <= canvasElement.x + canvasElement.width;
       const isWithinY =
         y >= canvasElement.y && y <= canvasElement.y + canvasElement.height;
-
       return isWithinX && isWithinY;
     });
 

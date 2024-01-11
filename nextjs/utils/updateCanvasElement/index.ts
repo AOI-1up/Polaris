@@ -1,21 +1,35 @@
-import { CanvasElementObject, CanvasStateObject } from "@/types/canvas";
-import { GetCanvasPosition } from "../GetCanvasPosition";
+import { CanvasElementObject } from "@/types/canvas";
 import { ValidateMousePosition } from "./ValidateMousePosition";
 
+const resetCanvas = (context: CanvasRenderingContext2D) => {
+  context.clearRect(0, 0, 5000, 5000);
+  context.beginPath();
+};
 export const UpdateCanvasElement = (
   event: React.MouseEvent<HTMLDivElement>,
-  state: CanvasStateObject,
+  canvasContainer: HTMLDivElement | null,
+  context: CanvasRenderingContext2D | null | undefined,
   canvasElementArray: CanvasElementObject[],
   setCurrentCanvasElement: (focusId: string) => void,
 ) => {
-  const position = GetCanvasPosition(state, event.clientX, event.clientY);
-  if (!position) return;
+  if (!canvasContainer || !context) return;
 
-  const { client, offset } = position;
-  if (client.x > offset.right || client.y > offset.bottom) return;
+  const position = {
+    x: event.clientX - canvasContainer.offsetLeft + canvasContainer.scrollLeft,
+    y: event.clientY - canvasContainer.offsetTop + canvasContainer.scrollTop,
+  };
 
   const focusId = ValidateMousePosition(position, canvasElementArray);
   setCurrentCanvasElement(focusId || "");
+  resetCanvas(context);
+  if (!focusId) return;
+
+  const focus = canvasElementArray.find((element) => element.id === focusId);
+  if (!focus) return;
+
+  context.rect(focus.x - 1, focus.y - 1, focus.width + 2, focus.height + 2);
+  context.strokeStyle = "#9370DB";
+  context.stroke();
 
   return;
 };

@@ -5,20 +5,21 @@ export const GetCanvasPosition = (
   clientX: number,
   clientY: number,
 ) => {
-  if (!state.canvas || !state.canvasContainer || !state.context) return;
+  const { canvas, canvasContainer, context } = state;
+  if (!canvas || !canvasContainer || !context) return;
 
   const canvasPosition = {
-    x: clientX - state.canvas.offsetLeft + state.canvasContainer.scrollLeft,
-    y: clientY - state.canvas.offsetTop + state.canvasContainer.scrollTop,
+    x: clientX - canvasContainer.offsetLeft + canvasContainer.scrollLeft,
+    y: clientY - canvasContainer.offsetTop + canvasContainer.scrollTop,
     client: {
       x: clientX,
       y: clientY,
     },
     offset: {
-      left: state.canvas.offsetLeft,
-      right: state.canvas.offsetLeft + state.canvasContainer.clientWidth,
-      top: state.canvas.offsetTop,
-      bottom: state.canvas.offsetTop + state.canvasContainer.clientHeight,
+      left: canvasContainer.offsetLeft,
+      right: canvasContainer.offsetLeft + canvasContainer.clientWidth,
+      top: canvasContainer.offsetTop,
+      bottom: canvasContainer.offsetTop + canvasContainer.clientHeight,
     },
   };
 

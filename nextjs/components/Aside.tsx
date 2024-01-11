@@ -8,10 +8,10 @@ import { DisplayCode } from "./ui/generate/DisplayCode";
 
 export const Aside = () => {
   const canvasElementArray = useAtomValue(CanvasElement);
-  const focusId = useAtomValue(CurrentCanvasElement);
+  const id = useAtomValue(CurrentCanvasElement);
 
   const focusedIndex = canvasElementArray.findIndex(
-    (element) => element.id === focusId,
+    (element) => element.id === id.select,
   );
   const focusedElement = canvasElementArray[focusedIndex];
 
