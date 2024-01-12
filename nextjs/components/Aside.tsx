@@ -11,7 +11,7 @@ export const Aside = () => {
   const id = useAtomValue(CurrentCanvasElement);
 
   const focusedIndex = canvasElementArray.findIndex(
-    (element) => element.id === id.select,
+    (element) => element.id === id,
   );
   const focusedElement = canvasElementArray[focusedIndex];
 

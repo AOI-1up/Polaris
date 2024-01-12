@@ -5,12 +5,12 @@ const resetCanvas = (context: CanvasRenderingContext2D) => {
   context.clearRect(0, 0, 5000, 5000);
   context.beginPath();
 };
+
 export const UpdateCanvasElement = (
   event: React.MouseEvent<HTMLDivElement>,
   canvasContainer: HTMLDivElement | null,
   context: CanvasRenderingContext2D | null | undefined,
   canvasElementArray: CanvasElementObject[],
-  setCurrentCanvasElement: (focusId: string) => void,
 ) => {
   if (!canvasContainer || !context) return;
 
@@ -19,15 +19,16 @@ export const UpdateCanvasElement = (
     y: event.clientY - canvasContainer.offsetTop + canvasContainer.scrollTop,
   };
 
-  const focusId = ValidateMousePosition(position, canvasElementArray);
-  setCurrentCanvasElement(focusId || "");
+  const focus = ValidateMousePosition(position, canvasElementArray);
   resetCanvas(context);
-  if (!focusId) return;
-
-  const focus = canvasElementArray.find((element) => element.id === focusId);
   if (!focus) return;
 
-  context.rect(focus.x - 1, focus.y - 1, focus.width + 2, focus.height + 2);
+  context.rect(
+    focus.x - 1,
+    focus.y - 1,
+    focus.width + 2,
+    focus.height + 2,
+  );
   context.strokeStyle = "#9370DB";
   context.stroke();
 

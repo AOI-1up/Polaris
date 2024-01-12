@@ -1,6 +1,3 @@
 import { atom } from "jotai";
 
-export const CurrentCanvasElement = atom({
-  focus: "",
-  select: "",
-});
+export const CurrentCanvasElement = atom("");

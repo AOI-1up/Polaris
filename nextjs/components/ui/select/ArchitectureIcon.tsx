@@ -76,6 +76,7 @@ export const ArchitectureIcon = (props: Props) => {
           height={draggedImage.height}
           style={{
             position: "fixed",
+            zIndex: "100",
             left: position.x + "px",
             top: position.y + "px",
           }}

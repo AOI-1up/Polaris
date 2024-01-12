@@ -17,5 +17,5 @@ export const ValidateMousePosition = (
       return isWithinX && isWithinY;
     });
 
-  return foundCanvasElement ? foundCanvasElement.id : undefined;
+  return foundCanvasElement ? foundCanvasElement : undefined;
 };

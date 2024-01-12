@@ -14,6 +14,7 @@ import { InitCanvas } from "@/utils/canvasSettings/InitCanvas";
 import { InitCanvasBg } from "@/utils/canvasSettings/InitCanvasBg";
 import { AddCanvasFromJotai } from "@/utils/canvasSettings/AddCanvasFromJotai";
 import { InitCanvasSelect } from "@/utils/canvasSettings/InitCanvasSelect";
+import { HandleCanvasElement } from "@/utils/updateCanvasElement/HandleCanvasElement";
 
 export const Main = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -64,7 +65,7 @@ export const Main = () => {
 
   const setCurrentCanvasElementId = useSetAtom(CurrentCanvasElement);
   const setCurrentCanvasElement = (focusId: string) => {
-    setCurrentCanvasElementId({ select: "a", focus: focusId });
+    setCurrentCanvasElementId(focusId);
   };
 
   return (
@@ -82,10 +83,18 @@ export const Main = () => {
             canvasContainerRef.current,
             canvasSelectRef.current?.getContext("2d"),
             canvasElementArray,
-            setCurrentCanvasElement,
           ),
         50,
       )}
+      onMouseDown={(event) =>
+        HandleCanvasElement(
+          event,
+          canvasContainerRef.current,
+          canvasSelectRef.current?.getContext("2d"),
+          canvasElementArray,
+          setCurrentCanvasElement,
+        )
+      }
     >
       <canvas ref={canvasBgRef} className="absolute" />
       <canvas ref={canvasRef} className="absolute" />
