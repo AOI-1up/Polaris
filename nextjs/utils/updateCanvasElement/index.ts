@@ -23,14 +23,14 @@ export const UpdateCanvasElement = (
   resetCanvas(context);
   if (!focus) return;
 
-  context.rect(
-    focus.x - 1,
-    focus.y - 1,
-    focus.width + 2,
-    focus.height + 2,
-  );
-  context.strokeStyle = "#9370DB";
-  context.stroke();
+  // context.rect(
+  //   focus.x - 1,
+  //   focus.y - 1,
+  //   focus.width + 2,
+  //   focus.height + 2,
+  // );
+  // context.strokeStyle = "#9370DB";
+  // context.stroke();
 
   return;
 };

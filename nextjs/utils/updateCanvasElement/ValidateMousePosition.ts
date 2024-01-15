@@ -6,10 +6,10 @@ export const ValidateMousePosition = (
 ) => {
   const { x, y } = position;
 
-  const foundCanvasElement = canvasElementArray
+  const foundCanvasElementArray = canvasElementArray
     .slice()
     .reverse()
-    .find((canvasElement) => {
+    .filter((canvasElement) => {
       const isWithinX =
         x >= canvasElement.x && x <= canvasElement.x + canvasElement.width;
       const isWithinY =
@@ -17,5 +17,7 @@ export const ValidateMousePosition = (
       return isWithinX && isWithinY;
     });
 
-  return foundCanvasElement ? foundCanvasElement : undefined;
+  return foundCanvasElementArray.length > 0
+    ? foundCanvasElementArray
+    : undefined;
 };

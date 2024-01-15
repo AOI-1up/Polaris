@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { throttle } from "lodash";
-import { useSetAtom, useAtomValue } from "jotai";
+import { useSetAtom, useAtom } from "jotai";
 import { UpdateCanvasElement } from "@/utils/updateCanvasElement";
 import {
   CanvasAtom,
@@ -15,6 +15,8 @@ import { InitCanvasBg } from "@/utils/canvasSettings/InitCanvasBg";
 import { AddCanvasFromJotai } from "@/utils/canvasSettings/AddCanvasFromJotai";
 import { InitCanvasSelect } from "@/utils/canvasSettings/InitCanvasSelect";
 import { HandleCanvasElement } from "@/utils/updateCanvasElement/HandleCanvasElement";
+import { CanvasElementObject } from "@/types/canvas";
+import { UseCanvasState } from "@/hooks/UseCanvasState";
 
 export const Main = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -24,8 +26,12 @@ export const Main = () => {
   const setCanvas = useSetAtom(CanvasAtom);
   const setCanvasContainer = useSetAtom(CanvasContainerAtom);
   const setContext = useSetAtom(ContextAtom);
+  const state = UseCanvasState();
 
-  const canvasElementArray = useAtomValue(CanvasElement);
+  const [canvasElementArray, setCanvasElementArray] = useAtom(CanvasElement);
+  const setArray = (element: CanvasElementObject[]) => {
+    setCanvasElementArray(element);
+  };
   const initCanvasElementArray = useRef(canvasElementArray);
 
   useEffect(() => {
@@ -89,10 +95,11 @@ export const Main = () => {
       onMouseDown={(event) =>
         HandleCanvasElement(
           event,
-          canvasContainerRef.current,
+          state,
           canvasSelectRef.current?.getContext("2d"),
           canvasElementArray,
           setCurrentCanvasElement,
+          setArray,
         )
       }
     >

@@ -1,51 +1,60 @@
-import { CanvasElementObject } from "@/types/canvas";
+import { CanvasElementObject, CanvasStateObject } from "@/types/canvas";
 import { ValidateMousePosition } from "./ValidateMousePosition";
-
-const resetCanvas = (context: CanvasRenderingContext2D) => {
-  context.clearRect(0, 0, 5000, 5000);
-  context.beginPath();
-};
+import { GetCanvasPosition } from "../GetCanvasPosition";
 
 export const HandleCanvasElement = (
   event: React.MouseEvent<HTMLDivElement>,
-  canvasContainer: HTMLDivElement | null,
+  state: CanvasStateObject,
   context: CanvasRenderingContext2D | null | undefined,
   canvasElementArray: CanvasElementObject[],
   setCurrentCanvasElement: (focusId: string) => void,
+  setCanvasElementArray: (element: CanvasElementObject[]) => void,
 ) => {
-  if (!canvasContainer || !context) return;
-  const position = {
-    x: event.clientX - canvasContainer.offsetLeft + canvasContainer.scrollLeft,
-    y: event.clientY - canvasContainer.offsetTop + canvasContainer.scrollTop,
+  if (!state.canvasContainer || !context) return;
+  const mousePosition = {
+    x:
+      event.clientX -
+      state.canvasContainer.offsetLeft +
+      state.canvasContainer.scrollLeft,
+    y:
+      event.clientY -
+      state.canvasContainer.offsetTop +
+      state.canvasContainer.scrollTop,
   };
 
-  const focus = ValidateMousePosition(position, canvasElementArray);
-  setCurrentCanvasElement(focus?.id || "");
-  if (!focus) return;
+  const focus = ValidateMousePosition(mousePosition, canvasElementArray);
+  if (!focus) {
+    setCurrentCanvasElement("");
+    return;
+  }
+  setCurrentCanvasElement(focus[0].id);
 
-  const initPosition = { x: event.clientX, y: event.clientY };
-
-  const handleMouseMove = (event: MouseEvent) => {
-    const test = focus;
-    test.x = focus.x + event.clientX - initPosition.x;
-    test.y = focus.y + event.clientY - initPosition.y;
-
-    console.log(test.x, test.y);
-    resetCanvas(context);
-    const icon = new Image();
-    icon.src = focus.src;
-    icon.onload = () => {
-      context.drawImage(icon, test.x, test.y, focus.width, focus.height);
-    };
-  };
   const handleMouseUp = (event: MouseEvent) => {
-    window.removeEventListener("mousemove", handleMouseMove);
     window.removeEventListener("mouseup", handleMouseUp);
+    const position = GetCanvasPosition(state, event.clientX, event.clientY);
 
-    console.log(event);
+    const canvasElement = canvasElementArray.find(
+      (element) => element.id === focus[0].id,
+    );
+    if (canvasElement && position) {
+      state.context?.clearRect(0, 0, 5000, 5000);
+
+      canvasElement.x = position.x;
+      canvasElement.y = position.y;
+      canvasElement.render = true;
+
+      const updatedArray = canvasElementArray.map((item) => {
+        if (item.id === canvasElement.id) {
+          return canvasElement;
+        } else {
+          return { ...item, render: true };
+        }
+      });
+
+      setCanvasElementArray(updatedArray);
+    }
   };
 
-  window.addEventListener("mousemove", handleMouseMove);
   window.addEventListener("mouseup", handleMouseUp);
 
   return;
