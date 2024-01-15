@@ -79,7 +79,5 @@ export const HandleCanvasElement = (
 
   window.addEventListener("mouseup", handleMouseUp);
 
-  window.addEventListener("mouseup", handleMouseUp);
-
   return;
 };
