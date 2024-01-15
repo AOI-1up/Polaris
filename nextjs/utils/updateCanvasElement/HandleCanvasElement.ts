@@ -30,6 +30,28 @@ export const HandleCanvasElement = (
   setCurrentCanvasElement(focus[0].id);
 
   const handleMouseUp = (event: MouseEvent) => {
+    if (!state.canvasContainer) return;
+    const finalMousePosition = {
+      x:
+        event.clientX -
+        state.canvasContainer.offsetLeft +
+        state.canvasContainer.scrollLeft,
+      y:
+        event.clientY -
+        state.canvasContainer.offsetTop +
+        state.canvasContainer.scrollTop,
+    };
+
+    const distanceMoved = Math.sqrt(
+      Math.pow(finalMousePosition.x - mousePosition.x, 2) +
+        Math.pow(finalMousePosition.y - mousePosition.y, 2),
+    );
+
+    if (distanceMoved <= 5) {
+      window.removeEventListener("mouseup", handleMouseUp);
+      return;
+    }
+
     window.removeEventListener("mouseup", handleMouseUp);
     const position = GetCanvasPosition(state, event.clientX, event.clientY);
 
@@ -54,6 +76,8 @@ export const HandleCanvasElement = (
       setCanvasElementArray(updatedArray);
     }
   };
+
+  window.addEventListener("mouseup", handleMouseUp);
 
   window.addEventListener("mouseup", handleMouseUp);
 
