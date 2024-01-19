@@ -1,7 +1,5 @@
 import { CanvasElementObject } from "@/types/canvas";
 import { sort } from "fast-sort";
-import { GenEC2 } from "./GenEC2";
-import { GenVPC } from "./GenVPC";
 import {
   EC2_Resources,
   IGW_Resources,
@@ -9,6 +7,8 @@ import {
   Subnet_Resources,
   VPC_Resources,
 } from "@/types/resources";
+import { GenEC2 } from "./GenEC2";
+import { GenVPC } from "./GenVPC";
 import { GenSubnet } from "./GenSubnet";
 import { GenRegion } from "./GenRegion";
 import { GenIGW } from "./GenIGW"

@@ -7,6 +7,5 @@ export const GenRegion = (resources: Region_Resources) => {
     .join("\n");
 
   return `provider "aws" {
-  region = "${resources.region}"
-  }${resources.optional ? `\n${optional}\n}\n` : "\n}\n"}`;
+  region = "${resources.region}"${resources.optional ? `\n${optional}\n}\n` : "\n}\n"}`;
 };

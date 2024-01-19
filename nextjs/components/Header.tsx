@@ -11,7 +11,7 @@ export const Header = () => {
   const handleClick = () => {
     const code = convertToTerraform(canvasElementArray);
     const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "output.tf");
+    saveAs(blob, "main.tf");
   };
 
   return (

@@ -6,7 +6,7 @@ export const GenSubnet = (resources: Subnet_Resources) => {
     .map((line) => (line ? "  " + line : line))
     .join("\n");
 
-  return `resource "aws_instance" "${resources.tags.Name}" {
+  return `resource "aws_subnet" "${resources.tags.Name}" {
   vpc_id = ${resources.vpc_id}
   cidr_block = "${resources.cidr_block}"
   availability_zone = "${resources.availability_zone}"
