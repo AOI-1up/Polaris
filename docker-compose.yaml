@@ -11,15 +11,15 @@ services:
     tty: true
     init: true
 
-  # terraform:
-  #   image: hashicorp/terraform:1.6
-  #   volumes:
-  #     - ./terraform:/terraform
-  #   entrypoint: ash
-  #   tty: true
-  #   init: true
-  #   env_file:
-  #     - .env
+  terraform:
+    image: hashicorp/terraform:1.6
+    volumes:
+      - ./terraform:/terraform
+    entrypoint: ash
+    tty: true
+    init: true
+    env_file:
+      - .env
 
 volumes:
   node_modules:
