@@ -1,4 +1,8 @@
-export type ResourceType = "Compute Resources" | "Groups" | "Networking";
+export type ResourceType =
+  | "Compute Resources"
+  | "Groups"
+  | "Networking"
+  | "General";
 
 export interface Props {
   resources: ResourceType;
@@ -13,7 +17,8 @@ export type Resources =
   | Region_Resources
   | VPC_Resources
   | Subnet_Resources
-  | IGW_Resources;
+  | IGW_Resources
+  | General_Resources;
 
 export type CombinedResources = EC2_Resources &
   Region_Resources &
@@ -65,3 +70,5 @@ export type IGW_Resources = {
   };
   vpc_id: string;
 };
+
+export type General_Resources = object;

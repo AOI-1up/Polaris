@@ -7,6 +7,7 @@ export const Nav = () => {
       <CustomAccordion resources="Compute Resources" />
       <CustomAccordion resources="Groups" />
       <CustomAccordion resources="Networking" />
+      <CustomAccordion resources="General" />
     </div>
   );
 };
