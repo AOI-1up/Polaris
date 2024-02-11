@@ -4,7 +4,7 @@ export const General = () => {
       name: "Horizontal",
       src: "/resources/general/horizontal.png",
       width: 50,
-      height: 3,
+      height: 48.5,
       render: true,
       resources: {},
       groups: {},
@@ -12,7 +12,7 @@ export const General = () => {
     {
       name: "Vertical",
       src: "/resources/general/vertical.png",
-      width: 3,
+      width: 48.5,
       height: 50,
       render: true,
       resources: {},
