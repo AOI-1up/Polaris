@@ -18,13 +18,19 @@ export type Resources =
   | VPC_Resources
   | Subnet_Resources
   | IGW_Resources
+  | VPN_GW_Resources
+  | Customer_GW_Resources
+  | VPN_connection_Resources
   | General_Resources;
 
 export type CombinedResources = EC2_Resources &
   Region_Resources &
   VPC_Resources &
   Subnet_Resources &
-  IGW_Resources;
+  IGW_Resources &
+  VPN_GW_Resources &
+  Customer_GW_Resources &
+  VPN_connection_Resources;
 
 export type EC2_Resources = {
   tags: {
@@ -69,6 +75,31 @@ export type IGW_Resources = {
     Name: string;
   };
   vpc_id: string;
+};
+
+export type VPN_GW_Resources = {
+  tags: {
+    Name: string;
+  };
+  vpc_id: string;
+};
+
+export type Customer_GW_Resources = {
+  tags: {
+    Name: string;
+  };
+  bgp_asn: string;
+  ip_address: string;
+  type: string;
+};
+
+export type VPN_connection_Resources = {
+  tags: {
+    Name: string;
+  };
+  customer_gateway_id: string;
+  vpn_gateway_id: string;
+  type: string;
 };
 
 export type General_Resources = object;
