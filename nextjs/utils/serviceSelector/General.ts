@@ -1,6 +1,17 @@
 export const General = () => {
   const serviceList = [
     {
+      name: "Terraform",
+      src: "/resources/general/terraform.png",
+      width: 48,
+      height: 48,
+      render: true,
+      resources: {
+        optional: "",
+      },
+      groups: {},
+    },
+    {
       name: "Horizontal",
       src: "/resources/general/horizontal.png",
       width: 50,
@@ -26,7 +37,7 @@ export const General = () => {
       render: true,
       resources: {},
       groups: {},
-    }
+    },
   ];
 
   return serviceList;

@@ -6,6 +6,7 @@ import {
   IGW_Resources,
   Region_Resources,
   Subnet_Resources,
+  Terraform_Resources,
   VPC_Resources,
   VPN_GW_Resources,
   VPN_connection_Resources,
@@ -18,6 +19,7 @@ import { GenIGW } from "./GenIGW";
 import { GenVPN_GW } from "./GenVPN_GW";
 import { GenCustomer_GW } from "./GenCustomer_GW";
 import { GenVPN_Connection } from "./GenVPN_Connection";
+import { GenTerraform } from "./GenTerraform";
 
 export const convertToTerraform = (
   canvasElementArray: CanvasElementObject[],
@@ -43,6 +45,8 @@ export const convertToTerraform = (
       return GenCustomer_GW(element.resources as Customer_GW_Resources);
     else if (element.service === "VPN_Connection")
       return GenVPN_Connection(element.resources as VPN_connection_Resources);
+    else if (element.service === "Terraform")
+      return GenTerraform(element.resources as Terraform_Resources);
     else return null;
   });
 

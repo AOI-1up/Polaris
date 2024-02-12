@@ -21,6 +21,7 @@ export type Resources =
   | VPN_GW_Resources
   | Customer_GW_Resources
   | VPN_connection_Resources
+  | Terraform_Resources
   | General_Resources;
 
 export type CombinedResources = EC2_Resources &
@@ -30,7 +31,8 @@ export type CombinedResources = EC2_Resources &
   IGW_Resources &
   VPN_GW_Resources &
   Customer_GW_Resources &
-  VPN_connection_Resources;
+  VPN_connection_Resources &
+  Terraform_Resources;
 
 export type EC2_Resources = {
   tags: {
@@ -100,6 +102,10 @@ export type VPN_connection_Resources = {
   customer_gateway_id: string;
   vpn_gateway_id: string;
   type: string;
+};
+
+export type Terraform_Resources = {
+  optional: string;
 };
 
 export type General_Resources = object;
