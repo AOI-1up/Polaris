@@ -1,5 +1,4 @@
 import { CanvasElementObject } from "@/types/canvas";
-import { sort } from "fast-sort";
 import {
   Customer_GW_Resources,
   EC2_Resources,
@@ -20,15 +19,15 @@ import { GenVPN_GW } from "./GenVPN_GW";
 import { GenCustomer_GW } from "./GenCustomer_GW";
 import { GenVPN_Connection } from "./GenVPN_Connection";
 import { GenTerraform } from "./GenTerraform";
+import { ConvertToGraph } from "../convertToGraph";
 
 export const convertToTerraform = (
   canvasElementArray: CanvasElementObject[],
 ) => {
-  const sortedCanvasElementArray = sort(canvasElementArray).desc(
-    (p) => p.service,
-  );
+  const graph = ConvertToGraph(canvasElementArray);
+  if (!graph) return;
 
-  const code = sortedCanvasElementArray.map((element) => {
+  const code = graph.map((element) => {
     if (element.service === "EC2")
       return GenEC2(element.resources as EC2_Resources);
     else if (element.service === "VPC")
